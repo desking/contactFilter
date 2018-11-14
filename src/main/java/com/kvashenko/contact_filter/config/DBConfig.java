@@ -38,6 +38,15 @@ public class DBConfig {
         entityManagerFactory.setPackagesToScan("com.kvashenko.contact_filter.model");
         JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter);
+        entityManagerFactory.setJpaProperties(additionalProperties());
         return entityManagerFactory;
     }
+    
+   private Properties additionalProperties() {
+       Properties properties = new Properties();
+       properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+       properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        
+       return properties;
+   }
 }
