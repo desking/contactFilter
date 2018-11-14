@@ -1,5 +1,6 @@
 # contactFilter
 [![Build Status](https://travis-ci.org/desking/contactFilter.svg?branch=master)](https://travis-ci.org/desking/contactFilter)
+
 В проекте использовал базу MySQL.
 Для запуска проекту нужно:
 
