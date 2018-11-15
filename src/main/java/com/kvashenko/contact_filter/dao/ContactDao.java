@@ -2,6 +2,7 @@ package com.kvashenko.contact_filter.dao;
 
 import com.kvashenko.contact_filter.model.Contact;
 import com.kvashenko.contact_filter.service.ContactGenerator;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,7 @@ public class ContactDao implements ContactDaoI {
     private EntityManager entityManager;
 
     @Override
+    @Cacheable(cacheNames = "contacts", key = "{#first,#max}")
     public List<Contact> findBatchContacts(int first, int max) {
         return entityManager.createQuery("from Contact c")
                 .setFirstResult(first)
